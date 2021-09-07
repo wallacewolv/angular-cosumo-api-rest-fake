@@ -28,7 +28,7 @@
   "motorcycle": [
     {
       "id": 1,
-      "model": "BMW K 1600 Bagger",
+      "model": "BMW K 1600 Bagger 2",
       "color": "Preto",
       "price": 248500
     },
@@ -45,10 +45,10 @@
       "price": 170500
     },
     {
-      "id": 4,
-      "model": "Honda GL 1800 Gold Wing Bagger",
-      "color": "Cinza Chumbo",
-      "price": 149000
+      "model": "Kawasaki Ninja",
+      "color": "Verde Neon",
+      "price": 120000,
+      "id": 4
     }
   ]
 }
