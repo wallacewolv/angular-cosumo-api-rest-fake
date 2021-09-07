@@ -3,13 +3,12 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { Car } from '../models/car';
+import { urlConfig } from './../config/url.config';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CarService {
-
-  url = 'http://localhost:3000/cars'; // api rest fake
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
@@ -21,7 +20,7 @@ export class CarService {
 
   // Obtem todos os carros
   getCars(): Observable<Car[]> {
-    return this.httpClient.get<Car[]>(this.url)
+    return this.httpClient.get<Car[]>(urlConfig.getUrl)
       .pipe(
         retry(2),
         catchError(this.handleError))
@@ -29,34 +28,34 @@ export class CarService {
 
   // Obtem um carro pelo id
   getCarById(id: number): Observable<Car> {
-    return this.httpClient.get<Car>(this.url + '/' + id)
+    return this.httpClient.get<Car>(urlConfig.getUrl + '/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 
-  // Inserir um carro
+  // Salva um carro
   saveCar(car: Car): Observable<Car> {
-    return this.httpClient.post<Car>(this.url, JSON.stringify(car), this.httpOptions)
+    return this.httpClient.post<Car>(urlConfig.getUrl, JSON.stringify(car), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 
-  // Atualizar um carro
+  // Atualiza um carro
   updateCar(car: Car): Observable<Car> {
-    return this.httpClient.put<Car>(this.url + '/' + car.id, JSON.stringify(car), this.httpOptions)
+    return this.httpClient.put<Car>(urlConfig.getUrl + '/' + car.id, JSON.stringify(car), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-  // Deleta um carro
+  // Deleta um carro pelo id
   deleteCar(car: Car) {
-    return this.httpClient.delete<Car>(this.url + '/' + car.id, this.httpOptions)
+    return this.httpClient.delete<Car>(urlConfig.getUrl + '/' + car.id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -76,5 +75,15 @@ export class CarService {
     console.log(errorMessage);
     return throwError(errorMessage);
   };
+
+  /**
+   * Metodos get, post, put e delete de um CRUD
+   *
+   * this.httpClient.get<Car[]>(this.url)
+   * this.httpClient.post<Car>(this.url, JSON.stringify(car), this.httpOptions)
+   * this.httpClient.put<Car>(this.url + '/' + car.id, JSON.stringify(car), this.httpOptions)
+   * this.httpClient.delete<Car>(this.url + '/' + car.id, this.httpOptions)
+   *
+   */
 
 }
