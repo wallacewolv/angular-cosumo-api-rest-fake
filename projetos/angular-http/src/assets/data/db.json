@@ -4,25 +4,51 @@
       "id": 1,
       "model": "BMW X7",
       "color": "Preto",
-      "price": 455.95
+      "price": 319000
+    },
+    {
+      "id": 5,
+      "model": "Mercedes E 300 Exclusive",
+      "color": "Preto",
+      "price": 428900
+    },
+    {
+      "id": 6,
+      "model": "Maserati Ghibli",
+      "color": "Azul Marinho",
+      "price": 590000
+    },
+    {
+      "model": "Lamborguini Huracan N",
+      "color": "Verde Neon",
+      "price": 350000,
+      "id": 7
+    }
+  ],
+  "motorcycle": [
+    {
+      "id": 1,
+      "model": "BMW K 1600 Bagger",
+      "color": "Preto",
+      "price": 248500
     },
     {
       "id": 2,
-      "model": "Mercedes benz c180",
-      "color": "Azul",
-      "price": 194.90
+      "model": "Harley-Davidson CVO Limited",
+      "color": "Preto",
+      "price": 214500
     },
     {
       "id": 3,
-      "model": "Land Rover Range Rover Velar",
-      "color": "Branco",
-      "price": 377.38
+      "model": "Honda GL 1800 Gold Wing Tour",
+      "color": "Azul",
+      "price": 170500
     },
     {
       "id": 4,
-      "model": "Jeep Compass",
-      "color": "Vermelho",
-      "price": 160.90
+      "model": "Honda GL 1800 Gold Wing Bagger",
+      "color": "Cinza Chumbo",
+      "price": 149000
     }
   ]
 }

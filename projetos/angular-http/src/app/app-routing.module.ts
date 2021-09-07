@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 const routes:Routes = [
-  // {component: FundosAplicarComponent, path: 'fundos-aplicar', outlet: 'appOutlet'}
+  // {component: AppMotorcycleElementComponent, path: 'app-motorcycle-element', outlet: 'appOutlet'}
 ]
 
 @NgModule({
@@ -11,4 +11,4 @@ const routes:Routes = [
   ],
   exports: [RouterModule],
 })
-export class AngularHttpRoutingModule { }
+export class AppRoutingModule { }

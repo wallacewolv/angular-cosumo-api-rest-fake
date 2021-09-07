@@ -2,13 +2,15 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
-import { Car } from '../models/car';
 import { urlConfig } from './../config/url.config';
+import { Motorcycle } from '../models/motorcycle';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CarService {
+export class MotorcycleService {
+
+  // url = 'http://localhost:3000/motorcycle'; // api rest fake de motos
 
   // injetando o HttpClient
   constructor(private httpClient: HttpClient) { }
@@ -18,44 +20,44 @@ export class CarService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   }
 
-  // Obtem todos os carros
-  getCars(): Observable<Car[]> {
-    return this.httpClient.get<Car[]>(urlConfig.getUrl)
+  // Obtem todas as motos
+  getMotorcycles(): Observable<Motorcycle[]> {
+    return this.httpClient.get<Motorcycle[]>(urlConfig.getUrlMotorcycle)
       .pipe(
         retry(2),
         catchError(this.handleError))
   }
 
-  // Obtem um carro pelo id
-  getCarById(id: number): Observable<Car> {
-    return this.httpClient.get<Car>(urlConfig.getUrl + '/' + id)
+  // Obtem uma moto pelo id
+  getMotorcycleById(id: number): Observable<Motorcycle> {
+    return this.httpClient.get<Motorcycle>(urlConfig.getUrlMotorcycle + '/' + id)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 
-  // Salva um carro
-  saveCar(car: Car): Observable<Car> {
-    return this.httpClient.post<Car>(urlConfig.getUrl, JSON.stringify(car), this.httpOptions)
+  // Salva uma moto
+  saveMotorcycle(motorcycle: Motorcycle): Observable<Motorcycle> {
+    return this.httpClient.post<Motorcycle>(urlConfig.getUrlMotorcycle, JSON.stringify(motorcycle), this.httpOptions)
       .pipe(
         retry(2),
         catchError(this.handleError)
       )
   }
 
-  // Atualiza um carro
-  updateCar(car: Car): Observable<Car> {
-    return this.httpClient.put<Car>(urlConfig.getUrl + '/' + car.id, JSON.stringify(car), this.httpOptions)
+  // Atualiza uma moto
+  updateMotorcycle(motorcycle: Motorcycle): Observable<Motorcycle> {
+    return this.httpClient.put<Motorcycle>(urlConfig.getUrlMotorcycle + '/' + motorcycle.id, JSON.stringify(motorcycle), this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
       )
   }
 
-  // Deleta um carro pelo id
-  deleteCar(car: Car) {
-    return this.httpClient.delete<Car>(urlConfig.getUrl + '/' + car.id, this.httpOptions)
+  // Deleta uma moto pelo id
+  deleteMotorcycle(motorcycle: Motorcycle) {
+    return this.httpClient.delete<Motorcycle>(urlConfig.getUrlMotorcycle + '/' + motorcycle.id, this.httpOptions)
       .pipe(
         retry(1),
         catchError(this.handleError)
@@ -77,7 +79,7 @@ export class CarService {
   };
 
   /**
-   * Metodos get, post, put e delete de um CRUD
+   * Metodos get, post, put e delete para manipulação dos carros
    *
    * this.httpClient.get<Car[]>(this.url)
    * this.httpClient.post<Car>(this.url, JSON.stringify(car), this.httpOptions)
@@ -85,5 +87,4 @@ export class CarService {
    * this.httpClient.delete<Car>(this.url + '/' + car.id, this.httpOptions)
    *
    */
-
 }

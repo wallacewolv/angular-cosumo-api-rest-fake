@@ -1,20 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { AngularHttpRoutingModule } from './elements/angular-http-element/angular-http-routing.module';
+import { NgModule } from '@angular/core';
+
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
-import { APP_BASE_HREF } from '@angular/common';
 
 @NgModule({
+  declarations: [
+    AppComponent
+  ],
   imports: [
     BrowserModule,
-    AngularHttpRoutingModule,
+    AppRoutingModule,
     HttpClientModule,
     FormsModule
   ],
-  schemas: [
-    CUSTOM_ELEMENTS_SCHEMA
-  ],
-  providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
